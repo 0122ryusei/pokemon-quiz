@@ -1,3 +1,4 @@
+/* ======= 共通スタイル（PC用） ======= */
 body {
     font-family: "Helvetica", "Arial", sans-serif;
     background-color: #f0f8ff;
@@ -20,7 +21,7 @@ p {
 form {
     display: inline-block;
     text-align: left;
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -35,124 +36,99 @@ form {
     justify-items: center;
 }
 
-/* 世代ブロック：1つの世代ごとのまとまり */
 .generation-block {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 8px;
     border-radius: 8px;
-    transition: background-coler 0.3s;
+    transition: background-color 0.3s;
 }
 
-/* 選択中に適用されるスタイル */
 .generation-block.selected {
     background-color: #e0f8d8;
-    /* 薄い黄緑 */
 }
 
-/* 世代タイトル */
 .generation-block label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-/* ポケモン画像の並び */
 .gen-images {
     display: flex;
     gap: 6px;
-    /* ← 間隔をちょっと狭めに */
+    margin-top: 4px;
 }
 
 .gen-images img {
     width: 48px;
     height: 48px;
     image-rendering: pixelated;
+    display: block;
 }
 
-/* 出題モード */
-.mode-group {
-    margin-top: 20px;
-    text-align: left;
-}
-
+/* 出題モード選択 */
 .mode-options {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
     margin-top: 10px;
+    font-size: 1em;
+    text-align: left;
 }
 
 .mode-options label {
-    font-size: 1em;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     cursor: pointer;
-}
-
-input[type="radio"] {
-    transform: scale(1.2);
 }
 
 /* ボタン */
 button {
-    font-size: 1em;
-    padding: 10px 20px;
-    margin: 10px 5px;
+    font-size: 1.2em;
+    padding: 12px 24px;
     background-color: #ffcc00;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
+    margin-top: 16px;
 }
 
 button:hover {
     background-color: #ffaa00;
 }
 
-/* クイズ画面：現在の問題数表示 */
-#question-count {
+input[type="text"] {
     font-size: 1.1em;
-    margin: 10px 0;
-    color: #333;
+    padding: 10px;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 250px;
+    margin-top: 12px;
 }
 
-/* クイズ画面：タイマー */
-#timer {
-    font-size: 1em;
-    margin-bottom: 15px;
-    color: #333;
+#quiz-container {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* クイズ画面：スコア表示 */
-#score {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 20px;
-}
-
-/* クイズ画面：ホームに戻るボタン */
-#home-button {
-    display: none;
-    background-color: #87cefa;
-}
-
+/* ======= スマホ対応（横2列、コンパクト表示） ======= */
 @media screen and (max-width: 600px) {
 
     html,
     body {
-        height: 100%;
+        height: auto;
+        min-height: 100vh;
         margin: 0;
         padding: 0;
     }
 
     body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        display: block;
         font-size: 15px;
         background-color: #eaf6fa;
     }
@@ -173,6 +149,7 @@ button:hover {
     form {
         width: 95%;
         max-width: 400px;
+        margin: 32px auto;
         padding: 14px;
         background-color: #fff;
         border-radius: 12px;
@@ -192,11 +169,15 @@ button:hover {
 
     .gen-images {
         margin-top: 4px;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
     }
 
     .gen-images img {
         width: 44px;
         height: 44px;
+        display: block;
     }
 
     .mode-options {
@@ -204,7 +185,7 @@ button:hover {
         flex-direction: column;
         align-items: center;
         gap: 6px;
-        margin-top: 8px;
+        margin-top: 12px;
     }
 
     button {
