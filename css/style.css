@@ -1,151 +1,113 @@
-/* 全体の基本設定 */
+/* ベース設定 */
 body {
-    font-family: "Helvetica", "Arial", sans-serif;
-    background-color: #f0f8ff;
+    font-family: sans-serif;
+    background-color: #e0f7fa;
     text-align: center;
-    padding: 40px 20px;
     margin: 0;
+    padding: 0;
 }
 
-/* タイトル */
 h1 {
-    font-size: 2.5em;
-    color: #ff4500;
-    margin-bottom: 10px;
+    color: #d32f2f;
+    margin-top: 30px;
 }
 
-h2 {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-/* フォームコンテナ */
-form {
-    display: inline-block;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 90vw;
-}
-
-/* 世代選択の見出し */
-label {
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-/* 世代選択ブロック */
-.generation-options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* パソコンでは3列表示 */
-    gap: 20px;
+.container {
+    background-color: #ffffff;
     margin: 20px auto;
-    justify-content: center;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 各世代の表示ブロック */
-.generation-block {
+/* ラベル左寄せ */
+.section-label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+/* 世代選択ボックスのグリッド表示 */
+.generation-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* 世代ごとのボックス */
+.generation-box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 120px;
     text-align: center;
 }
 
-/* チェックされた世代ブロックの背景を黄緑にする */
-.generation-block.selected {
-    background-color: #e0f8d8 !important;
-    /* 黄緑っぽい色 */
-    transition: background-color 0.3s ease;
-    border-radius: 8px;
+/* チェックされた世代の背景を黄緑に */
+.generation-box.checked {
+    background-color: #ccffcc;
 }
 
-/* ポケモン画像3匹の並び */
-.gen-images {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 5px;
+/* ポケモン画像スタイル */
+.pokemon-img {
+    width: 40px;
+    height: 40px;
+    margin: 4px;
 }
 
-/* ポケモン画像サイズ */
-.gen-images img {
-    width: 48px;
-    height: 48px;
-    image-rendering: pixelated;
-    vertical-align: middle;
+/* 出題モードラジオボタン */
+.mode-select {
+    margin: 10px 0 20px;
+    text-align: left;
 }
 
-/* 出題モード選択 */
-.mode-options {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-/* ラジオボタンとテキストのサイズ調整 */
-.mode-options label {
-    font-size: 1.1em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* クイズ開始ボタン */
-button {
-    background-color: #ffcc00;
-    font-size: 1.2em;
-    padding: 14px 30px;
+/* スタートボタン */
+.start-button {
+    background-color: #ffeb3b;
     border: none;
+    padding: 10px 20px;
+    font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
-button:hover {
-    background-color: #ffdd33;
+/* ボタン群 */
+.button-group {
+    margin-top: 15px;
 }
 
-/* 共通のセクションタイトルスタイル */
-.section-title {
-    font-size: 1.2em;
+.button-group button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffeb3b;
     font-weight: bold;
-    text-align: left;
-    /* ← 左寄せに変更 */
-    margin-bottom: 10px;
+    cursor: pointer;
 }
 
-/* --- モバイル向け --- */
-@media (max-width: 768px) {
-    form {
-        width: 95% !important;
-    }
+/* 結果表示 */
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #d32f2f;
+}
 
-    /* スマホでは2列表示に */
-    .generation-options {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    .gen-images img {
-        width: 60px !important;
-        height: 60px !important;
-    }
-
-    .mode-options {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
+/* スマホ対応（幅600px以下） */
+@media screen and (max-width: 600px) {
+    .generation-grid {
+        flex-direction: column;
         align-items: center;
     }
 
-    /* モードラベルを1行に並べる */
-    .mode-options label {
-        white-space: nowrap;
+    .generation-box {
+        width: 80%;
     }
 
-    button {
-        margin-top: 20px;
+    .mode-select {
+        text-align: center;
     }
 }
