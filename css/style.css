@@ -140,27 +140,30 @@ button:hover {
 }
 
 @media screen and (max-width: 600px) {
+
+    html,
     body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* 上下中央に！ */
+        align-items: center;
         font-size: 18px;
         text-align: center;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 2em;
-        margin-bottom: 10px;
-    }
-
-    p,
-    label,
-    span {
-        font-size: 1.2em;
+        background-color: #eaf6fa;
     }
 
     .generation-options {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2列に */
+        gap: 16px;
         justify-items: center;
     }
 
@@ -171,33 +174,29 @@ button:hover {
     }
 
     .gen-images img {
-        width: 60px;
-        height: 60px;
-    }
-
-    form {
-        max-width: 360px;
-        margin: 0 auto;
-        padding: 20px;
+        width: 56px;
+        height: 56px;
     }
 
     .mode-options {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
         align-items: center;
     }
 
     button {
-        font-size: 1.3em;
-        padding: 14px 28px;
-        margin: 12px auto;
-        display: block;
+        font-size: 1.2em;
+        padding: 14px 24px;
+        margin-top: 16px;
     }
 
-    #quiz-container {
+    form {
+        width: 90%;
         max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
+        padding: 16px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     input[type="text"] {
@@ -205,5 +204,11 @@ button:hover {
         padding: 8px;
         width: 80%;
         max-width: 250px;
+    }
+
+    #quiz-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
     }
 }
