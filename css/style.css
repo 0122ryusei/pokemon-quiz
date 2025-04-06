@@ -1,80 +1,65 @@
-/* ================================
-   共通レイアウト設定
-================================ */
+/* 全体の基本設定 */
 body {
     font-family: "Helvetica", "Arial", sans-serif;
-    background-color: #e0f8ff;
+    background-color: #f0f8ff;
     text-align: center;
+    padding: 40px 20px;
     margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* 上下中央 */
-    align-items: center;
-    /* 左右中央 */
 }
 
-/* ================================
-     見出しスタイル
-  ================================ */
+/* タイトル */
 h1 {
+    font-size: 2.5em;
     color: #ff4500;
-    font-size: 2.5rem;
-    margin: 0.5em 0 0.3em;
+    margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 1.2rem;
-    margin: 0 0 1em;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #333;
 }
 
-/* ================================
-     クイズボックス全体
-  ================================ */
+/* フォームコンテナ */
 form {
+    display: inline-block;
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 90%;
-    box-sizing: border-box;
+    max-width: 90vw;
 }
 
-/* ================================
-     世代セレクタのグリッド表示
-  ================================ */
+/* 世代選択の見出し */
+label {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* 世代選択ブロック */
 .generation-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    /* パソコンでは3列表示 */
+    gap: 20px;
+    margin: 20px auto;
+    justify-content: center;
 }
 
-/* 世代全体ブロック */
+/* 各世代の表示ブロック */
 .generation-block {
     text-align: center;
 }
 
-/* 世代名 */
-.generation-block label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 6px;
-}
-
-/* ポケモン画像（全3体） */
+/* ポケモン画像3匹の並び */
 .gen-images {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 5px;
 }
 
-/* ポケモン画像自体の調整 */
+/* ポケモン画像サイズ */
 .gen-images img {
     width: 48px;
     height: 48px;
@@ -82,61 +67,68 @@ form {
     vertical-align: middle;
 }
 
-/* ================================
-     出題モード部分の調整
-  ================================ */
+/* 出題モード選択 */
 .mode-options {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 16px;
+    margin: 20px 0;
+    align-items: center;
     flex-wrap: wrap;
-    /* スマホ用折り返し */
 }
 
+/* ラジオボタンとテキストのサイズ調整 */
 .mode-options label {
-    font-size: 1rem;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-/* ================================
-     ボタンスタイル
-  ================================ */
+/* クイズ開始ボタン */
 button {
     background-color: #ffcc00;
+    font-size: 1.2em;
+    padding: 14px 30px;
     border: none;
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 button:hover {
-    background-color: #ffdb4d;
+    background-color: #ffdd33;
 }
 
-/* ================================
-     レスポンシブ調整（スマホ用）
-  ================================ */
-@media screen and (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
+/* --- モバイル向け --- */
+@media (max-width: 768px) {
+    form {
+        width: 95% !important;
     }
 
-    h2 {
-        font-size: 1rem;
+    /* スマホでは2列表示に */
+    .generation-options {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     .gen-images img {
-        width: 44px;
-        height: 44px;
+        width: 60px !important;
+        height: 60px !important;
     }
 
     .mode-options {
-        flex-wrap: nowrap;
-        /* スマホでも折り返さない */
         flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: center;
-        gap: 16px;
+        align-items: center;
+    }
+
+    /* モードラベルを1行に並べる */
+    .mode-options label {
+        white-space: nowrap;
+    }
+
+    button {
+        margin-top: 20px;
     }
 }
