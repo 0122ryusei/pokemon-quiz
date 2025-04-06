@@ -3,29 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ポケモンクイズ</title>
+    <title>ポケモンクイズ - クイズ画面</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/pokedex.js" defer></script>
-    <script src="js/quiz.js" defer></script>
 </head>
 
 <body>
-    <h2 id="question-title">このポケモンの名前は？</h2>
-    <p id="question-count">現在 1問目（全???問）</p>
-    <p id="timer">経過時間：0秒</p>
+    <h1>ポケモンクイズ</h1>
 
-    <img src="" id="pokemon-image" alt="ポケモン画像" width="150">
-    <br><br>
-    <input type="text" id="answer" placeholder="ポケモンの名前を入力">
-    <br><br>
+    <div class="container" id="quiz-container">
+        <div id="question-header">
+            <!-- 例：1問目 / 残り: ○問 / 経過時間: ○秒 -->
+        </div>
 
-    <button onclick="checkAnswer()">答える！</button>
-    <button onclick="skipQuestion()">パス！</button>
-    <button onclick="retire()">リタイア</button>
+        <p>このポケモンの画像</p>
+        <img id="pokemon-image" src="" alt="ポケモン画像">
 
-    <p id="result"></p>
-    <p id="score"></p>
-    <button id="home-button" onclick="goHome()">ホームへ戻る</button>
+        <input type="text" id="answer-input" placeholder="ポケモンの名前を入力（ひらがな・カタカナ）">
+
+        <div class="button-group">
+            <button id="answer-button">答える</button>
+            <button id="pass-button">パス</button>
+            <button id="retire-button">リタイア</button>
+        </div>
+
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <!-- 結果画面 -->
+    <div class="container" id="result-container" style="display:none;">
+        <h2>クイズ結果</h2>
+        <p id="score-text"></p>
+        <p id="time-text"></p>
+        <button onclick="location.href='index.html'">indexに戻る</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/pokedex.js"></script>
+    <script src="js/quiz.js"></script>
 </body>
 
 </html>
