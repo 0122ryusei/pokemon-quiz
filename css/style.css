@@ -153,12 +153,12 @@ button:hover {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-size: 16px;
+        font-size: 15px;
         background-color: #eaf6fa;
     }
 
     h1 {
-        font-size: 1.6em;
+        font-size: 1.5em;
         margin-bottom: 8px;
         text-align: center;
     }
@@ -166,14 +166,14 @@ button:hover {
     p,
     label,
     span {
-        font-size: 1em;
+        font-size: 0.95em;
         text-align: center;
     }
 
     form {
         width: 95%;
-        max-width: 420px;
-        padding: 16px;
+        max-width: 400px;
+        padding: 14px;
         background-color: #fff;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -182,7 +182,7 @@ button:hover {
     .generation-options {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 8px 20px;
         justify-items: center;
     }
 
@@ -190,17 +190,21 @@ button:hover {
         text-align: center;
     }
 
+    .gen-images {
+        margin-top: 4px;
+    }
+
     .gen-images img {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
     }
 
     .mode-options {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
-        margin-top: 12px;
+        gap: 6px;
+        margin-top: 8px;
     }
 
     button {
@@ -210,7 +214,7 @@ button:hover {
     }
 
     input[type="text"] {
-        font-size: 1em;
+        font-size: 0.95em;
         padding: 8px;
         width: 80%;
         max-width: 240px;
@@ -218,7 +222,7 @@ button:hover {
     }
 
     #quiz-container {
-        max-width: 420px;
+        max-width: 400px;
         margin: 0 auto;
         padding: 16px;
     }
