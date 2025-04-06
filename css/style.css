@@ -143,85 +143,83 @@ button:hover {
 
     html,
     body {
-        height: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     body {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        /* 上下中央 */
-        align-items: center !important;
-        /* 横中央 */
-        font-size: 18px !important;
-        background-color: #eaf6fa !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        background-color: #eaf6fa;
     }
 
     h1 {
-        font-size: 2em !important;
-        margin-bottom: 10px !important;
-        text-align: center !important;
+        font-size: 1.6em;
+        margin-bottom: 8px;
+        text-align: center;
     }
 
     p,
     label,
     span {
-        font-size: 1.2em !important;
-        text-align: center !important;
+        font-size: 1em;
+        text-align: center;
     }
 
     form {
-        width: 90% !important;
-        max-width: 420px !important;
-        padding: 24px !important;
-        background-color: #fff !important;
-        border-radius: 12px !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        width: 95%;
+        max-width: 420px;
+        padding: 16px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .generation-options {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-        justify-items: center !important;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        justify-items: center;
     }
 
     .generation-block {
-        text-align: center !important;
+        text-align: center;
     }
 
     .gen-images img {
-        width: 60px !important;
-        height: 60px !important;
+        width: 48px;
+        height: 48px;
     }
 
     .mode-options {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 12px !important;
-        margin-top: 12px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
     }
 
     button {
-        font-size: 1.2em !important;
-        padding: 14px 26px !important;
-        margin-top: 16px !important;
+        font-size: 1em;
+        padding: 10px 20px;
+        margin-top: 12px;
     }
 
     input[type="text"] {
-        font-size: 1.1em !important;
-        padding: 10px !important;
-        width: 80% !important;
-        max-width: 250px !important;
-        margin: 12px 0 !important;
+        font-size: 1em;
+        padding: 8px;
+        width: 80%;
+        max-width: 240px;
+        margin: 10px 0;
     }
 
     #quiz-container {
-        max-width: 420px !important;
-        margin: 0 auto !important;
-        padding: 20px !important;
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 16px;
     }
 }
