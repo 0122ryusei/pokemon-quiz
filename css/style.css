@@ -142,35 +142,68 @@ button:hover {
 @media screen and (max-width: 600px) {
     body {
         font-size: 18px;
-        /* ベース文字サイズUP！ */
+        text-align: center;
+        padding: 20px;
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: 2em;
+        margin-bottom: 10px;
     }
 
     p,
     label,
     span {
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
 
-    .generation-block label {
-        font-size: 1.2em;
+    .generation-options {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .generation-block {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
     }
 
     .gen-images img {
-        width: 56px;
-        height: 56px;
-    }
-
-    button {
-        font-size: 1.2em;
-        padding: 14px 26px;
+        width: 60px;
+        height: 60px;
     }
 
     form {
-        width: 100%;
-        max-width: 95%;
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .mode-options {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    button {
+        font-size: 1.3em;
+        padding: 14px 28px;
+        margin: 12px auto;
+        display: block;
+    }
+
+    #quiz-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    input[type="text"] {
+        font-size: 1.1em;
+        padding: 8px;
+        width: 80%;
+        max-width: 250px;
     }
 }
