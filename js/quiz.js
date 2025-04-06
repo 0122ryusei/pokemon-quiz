@@ -1,132 +1,139 @@
-const query = new URLSearchParams(window.location.search);
-const generationParams = query.getAll("generation"); // 複数取得に対応！
-const mode = query.get("mode");
+// クエリパラメータからモードと世代を取得
+const params = new URLSearchParams(location.search);
+const mode = params.get("mode");
+const selectedGenerations = params.get("generation")?.split(",").map(Number);
 
-const genRanges = {
-    1: { start: 1, end: 151 },
-    2: { start: 152, end: 251 },
-    3: { start: 252, end: 386 },
-    4: { start: 387, end: 493 },
-    5: { start: 494, end: 649 },
-    6: { start: 650, end: 721 },
-    7: { start: 722, end: 809 },
-    8: { start: 810, end: 905 },
-    9: { start: 906, end: 1010 }
+// 世代に対応する図鑑番号の範囲
+const generationRanges = {
+    1: [1, 151],
+    2: [152, 251],
+    3: [252, 386],
+    4: [387, 493],
+    5: [494, 649],
+    6: [650, 721],
+    7: [722, 809],
+    8: [810, 905],
+    9: [906, 1010]
 };
 
-let problemList = [];
+// 出題対象のポケモン一覧を作成
+let questions = [];
 
-// 複数世代に対応した出題リスト生成
-generationParams.forEach(gen => {
-    const g = parseInt(gen);
-    const range = genRanges[g];
-    for (let i = range.start; i <= range.end; i++) {
-        if (pokedex[i]) {
-            problemList.push({ id: i, name: pokedex[i] });
+if (selectedGenerations && selectedGenerations.length > 0) {
+    selectedGenerations.forEach(gen => {
+        const [start, end] = generationRanges[gen];
+        for (let i = start; i <= end; i++) {
+            if (pokedex[i]) {
+                questions.push({ id: i, name: pokedex[i] });
+            }
         }
-    }
-});
+    });
 
-if (mode === "random") {
-    shuffle(problemList);
+    // モードに応じて並べ替え
+    if (mode === "random") {
+        questions = questions.sort(() => Math.random() - 0.5);
+    } else {
+        questions = questions.sort((a, b) => a.id - b.id);
+    }
+} else {
+    alert("選択されたポケモンがありません。");
 }
 
-let current = 0;
-let score = 0;
-let startTime = null;
-let timerInterval = null;
+// タイマー
+let startTime = Date.now();
+let timer = setInterval(updateTime, 1000);
 
+function updateTime() {
+    const now = Date.now();
+    const elapsed = Math.floor((now - startTime) / 1000);
+    document.getElementById("question-header").textContent =
+        `${currentIndex + 1}問目 / 残り: ${questions.length - currentIndex}問 / 経過時間: ${elapsed}秒`;
+}
+
+// 現在の問題のインデックスと正解数
+let currentIndex = 0;
+let correctCount = 0;
+
+const img = document.getElementById("pokemon-image");
+const input = document.getElementById("answer-input");
+const feedback = document.getElementById("feedback");
+
+// 初期表示
+showQuestion();
+
+// 問題表示関数
 function showQuestion() {
-    if (current >= problemList.length) {
-        finishQuiz();
+    if (currentIndex >= questions.length) {
+        endQuiz();
         return;
     }
 
-    const q = problemList[current];
-    document.getElementById("pokemon-image").src =
-        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${q.id}.png`;
-
-    document.getElementById("answer").value = "";
-    document.getElementById("result").textContent = "";
-    document.getElementById("question-title").textContent = `このポケモンの名前は？`;
-    document.getElementById("question-count").textContent =
-        `現在 ${current + 1}問目（全${problemList.length}問）`;
+    const q = questions[currentIndex];
+    img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${q.id}.png`;
+    img.alt = q.name;
+    input.value = "";
+    feedback.textContent = "";
 }
 
-function checkAnswer() {
-    const input = document.getElementById("answer").value.trim();
-    const correct = problemList[current].name;
+// 「答える」ボタン処理
+document.getElementById("answer-button").addEventListener("click", () => {
+    const answer = input.value.trim();
+    const correct = questions[currentIndex].name;
 
-    if (input === correct) {
-        document.getElementById("result").textContent = "正解！";
-        score++;
-        current++;
-        setTimeout(showQuestion, 1000);
+    if (answer === correct || answer === toKatakana(correct) || answer === toHiragana(correct)) {
+        feedback.textContent = "正解！";
+        feedback.style.color = "green";
+        correctCount++;
+        setTimeout(() => {
+            currentIndex++;
+            showQuestion();
+        }, 800); // 演出のため少し待つ
     } else {
-        document.getElementById("result").textContent = "ちがうよー……";
+        feedback.textContent = "ちがうよー！";
+        feedback.style.color = "red";
     }
-}
-
-function skipQuestion() {
-    const confirmed = confirm("この問題をパスしますか？");
-    if (!confirmed) return;
-
-    const correct = problemList[current].name;
-    document.getElementById("result").textContent = `正解：${correct}`;
-    current++;
-    setTimeout(showQuestion, 1500);
-}
-
-function retire() {
-    const confirmed = confirm("リタイアしてもいいですか？");
-    if (!confirmed) return;
-
-    finishQuiz("リタイアしました！");
-}
-
-function finishQuiz(message = "クイズ終了！") {
-    clearInterval(timerInterval);
-
-    document.getElementById("pokemon-image").style.display = "none";
-    document.getElementById("question-title").textContent = message;
-    document.getElementById("result").textContent = "";
-    document.getElementById("score").textContent = `正解数：${score} / ${problemList.length}`;
-    document.getElementById("question-count").textContent = "";
-    document.getElementById("answer").style.display = "none";
-    document.querySelectorAll("button").forEach(btn => btn.style.display = "none");
-    document.getElementById("home-button").style.display = "inline-block";
-
-    const time = Math.floor((Date.now() - startTime) / 1000);
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    document.getElementById("timer").textContent = `かかった時間：${minutes}分${seconds}秒`;
-}
-
-function goHome() {
-    window.location.href = "index.html";
-}
-
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-function startTimer() {
-    startTime = Date.now();
-    timerInterval = setInterval(() => {
-        const time = Math.floor((Date.now() - startTime) / 1000);
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        document.getElementById("timer").textContent = `経過時間：${minutes}分${seconds}秒`;
-    }, 1000);
-}
-
-window.addEventListener("beforeunload", function (e) {
-    e.preventDefault();
-    e.returnValue = "";
 });
 
-startTimer();
-showQuestion();
+// 「パス」ボタン処理
+document.getElementById("pass-button").addEventListener("click", () => {
+    const correct = questions[currentIndex].name;
+    feedback.textContent = `正解は：${correct}`;
+    feedback.style.color = "blue";
+
+    setTimeout(() => {
+        currentIndex++;
+        showQuestion();
+    }, 1200);
+});
+
+// 「リタイア」ボタン処理
+document.getElementById("retire-button").addEventListener("click", () => {
+    if (confirm("本当にリタイアしますか？")) {
+        endQuiz();
+    }
+});
+
+// クイズ終了処理
+function endQuiz() {
+    clearInterval(timer);
+    const totalTime = Math.floor((Date.now() - startTime) / 1000);
+
+    document.getElementById("quiz-container").style.display = "none";
+    document.getElementById("result-container").style.display = "block";
+
+    document.getElementById("score-text").textContent = `正解数：${correctCount} / ${questions.length}`;
+    document.getElementById("time-text").textContent = `経過時間：${totalTime}秒`;
+}
+
+// ひらがな⇔カタカナ変換
+function toHiragana(str) {
+    return str.replace(/[\u30A1-\u30F6]/g, ch =>
+        String.fromCharCode(ch.charCodeAt(0) - 0x60)
+    );
+}
+
+function toKatakana(str) {
+    return str.replace(/[\u3041-\u3096]/g, ch =>
+        String.fromCharCode(ch.charCodeAt(0) + 0x60)
+    );
+}
