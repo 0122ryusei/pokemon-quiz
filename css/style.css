@@ -138,3 +138,40 @@ button:hover {
     display: none;
     background-color: #87cefa;
 }
+
+/* スマホ（画面幅600px以下）向けレイアウト調整 */
+@media screen and (max-width: 600px) {
+    .generation-options {
+        grid-template-columns: 1fr;
+        /* 1列に変更（横スクロール防止） */
+        gap: 15px;
+    }
+
+    .generation-block {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .gen-images img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mode-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        font-size: 1.1em;
+        padding: 12px 24px;
+        margin: 12px auto;
+        display: block;
+    }
+
+    form {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+}
