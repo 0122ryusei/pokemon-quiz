@@ -139,39 +139,38 @@ button:hover {
     background-color: #87cefa;
 }
 
-/* スマホ（画面幅600px以下）向けレイアウト調整 */
 @media screen and (max-width: 600px) {
-    .generation-options {
-        grid-template-columns: 1fr;
-        /* 1列に変更（横スクロール防止） */
-        gap: 15px;
+    body {
+        font-size: 18px;
+        /* ベース文字サイズUP！ */
     }
 
-    .generation-block {
-        width: 100%;
-        max-width: 300px;
+    h1 {
+        font-size: 1.8em;
+    }
+
+    p,
+    label,
+    span {
+        font-size: 1.1em;
+    }
+
+    .generation-block label {
+        font-size: 1.2em;
     }
 
     .gen-images img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .mode-options {
-        flex-direction: column;
-        gap: 10px;
+        width: 56px;
+        height: 56px;
     }
 
     button {
-        font-size: 1.1em;
-        padding: 12px 24px;
-        margin: 12px auto;
-        display: block;
+        font-size: 1.2em;
+        padding: 14px 26px;
     }
 
     form {
         width: 100%;
-        max-width: 360px;
-        margin: 0 auto;
+        max-width: 95%;
     }
 }
