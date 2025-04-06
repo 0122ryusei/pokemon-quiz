@@ -51,6 +51,14 @@ label {
     text-align: center;
 }
 
+/* チェックされた世代ブロックの背景を黄緑にする */
+.generation-block.selected {
+    background-color: #e0f8d8 !important;
+    /* 黄緑っぽい色 */
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
 /* ポケモン画像3匹の並び */
 .gen-images {
     display: flex;
@@ -98,6 +106,15 @@ button {
 
 button:hover {
     background-color: #ffdd33;
+}
+
+/* 共通のセクションタイトルスタイル */
+.section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    /* ← 左寄せに変更 */
+    margin-bottom: 10px;
 }
 
 /* --- モバイル向け --- */
