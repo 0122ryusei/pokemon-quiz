@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ポケモンクイズ - ホーム</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <h1>ポケモンクイズ</h1>
+    <p>世代と出題モードを選んでスタート！</p>
+
+    <form action="quiz.html" method="get">
+        <label>世代を選択（複数可）：</label>
+        <div class="generation-options">
+            <!-- 各世代ブロック -->
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="1">第1世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                        alt="フシギダネ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                        alt="ヒトカゲ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+                        alt="ゼニガメ">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="2">第2世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png"
+                        alt="チコリータ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/155.png"
+                        alt="ヒノアラシ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png"
+                        alt="ワニノコ">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="3">第3世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png"
+                        alt="キモリ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/255.png"
+                        alt="アチャモ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png"
+                        alt="ミズゴロウ">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="4">第4世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/387.png"
+                        alt="ナエトル">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/390.png"
+                        alt="ヒコザル">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png"
+                        alt="ポッチャマ">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="5">第5世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/495.png"
+                        alt="ツタージャ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/498.png"
+                        alt="ポカブ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/501.png"
+                        alt="ミジュマル">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="6">第6世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/650.png"
+                        alt="ハリマロン">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/653.png"
+                        alt="フォッコ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/656.png"
+                        alt="ケロマツ">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="7">第7世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/722.png"
+                        alt="モクロー">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/725.png"
+                        alt="ニャビー">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/728.png"
+                        alt="アシマリ">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="8">第8世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/810.png"
+                        alt="サルノリ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/813.png"
+                        alt="ヒバニー">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/816.png"
+                        alt="メッソン">
+                </div>
+            </div>
+
+            <div class="generation-block">
+                <label><input type="checkbox" name="generation" value="9">第9世代</label>
+                <div class="gen-images">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/906.png"
+                        alt="ニャオハ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/909.png"
+                        alt="ホゲータ">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/912.png"
+                        alt="クワッス">
+                </div>
+            </div>
+        </div>
+
+        <div class="mode-group">
+            <span>出題モード：</span>
+            <div class="mode-options">
+                <label><input type="radio" name="mode" value="random" checked>ランダム</label>
+                <label><input type="radio" name="mode" value="order">図鑑番号順</label>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <button type="submit">クイズスタート！</button>
+        </div>
+    </form>
+</body>
+
+</html>

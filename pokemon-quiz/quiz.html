@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ポケモンクイズ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/pokedex.js" defer></script>
+    <script src="js/quiz.js" defer></script>
+</head>
+
+<body>
+    <h2 id="question-title">このポケモンの名前は？</h2>
+    <p id="question-count">現在 1問目（全???問）</p>
+    <p id="timer">経過時間：0秒</p>
+
+    <img src="" id="pokemon-image" alt="ポケモン画像" width="150">
+    <br><br>
+    <input type="text" id="answer" placeholder="ポケモンの名前を入力">
+    <br><br>
+
+    <button onclick="checkAnswer()">答える！</button>
+    <button onclick="skipQuestion()">パス！</button>
+    <button onclick="retire()">リタイア</button>
+
+    <p id="result"></p>
+    <p id="score"></p>
+    <button id="home-button" onclick="goHome()">ホームへ戻る</button>
+</body>
+
+</html>
