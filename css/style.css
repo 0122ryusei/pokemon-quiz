@@ -1,139 +1,142 @@
-/* 共通スタイル */
+/* ================================
+   共通レイアウト設定
+================================ */
 body {
     font-family: "Helvetica", "Arial", sans-serif;
-    background-color: #f0f8ff;
+    background-color: #e0f8ff;
+    text-align: center;
     margin: 0;
     padding: 0;
-    text-align: center;
     height: 100vh;
     display: flex;
-    align-items: center;
-    /* 上下中央 */
+    flex-direction: column;
     justify-content: center;
+    /* 上下中央 */
+    align-items: center;
     /* 左右中央 */
 }
 
-/* メインコンテナ */
+/* ================================
+     見出しスタイル
+  ================================ */
+h1 {
+    color: #ff4500;
+    font-size: 2.5rem;
+    margin: 0.5em 0 0.3em;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin: 0 0 1em;
+}
+
+/* ================================
+     クイズボックス全体
+  ================================ */
 form {
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 90vw;
-    width: 100%;
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
 }
 
-/* タイトル */
-h1 {
-    color: #ff4500;
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* 世代ブロック全体 */
+/* ================================
+     世代セレクタのグリッド表示
+  ================================ */
 .generation-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
     margin-bottom: 20px;
+    justify-items: center;
 }
 
-/* 各世代 */
+/* 世代全体ブロック */
 .generation-block {
-    border-radius: 8px;
-    padding: 10px;
     text-align: center;
 }
 
-.generation-block.selected {
-    background-color: #e0f8d8;
-}
-
-/* 世代ラベル */
+/* 世代名 */
 .generation-block label {
     font-weight: bold;
-    font-size: 1.1em;
+    display: block;
+    margin-bottom: 6px;
 }
 
-/* ポケモン画像3体並べる部分 */
+/* ポケモン画像（全3体） */
 .gen-images {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 5px;
+    gap: 8px;
 }
 
+/* ポケモン画像自体の調整 */
 .gen-images img {
     width: 48px;
     height: 48px;
+    image-rendering: pixelated;
     vertical-align: middle;
 }
 
-/* 出題モード選択 */
+/* ================================
+     出題モード部分の調整
+  ================================ */
 .mode-options {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 16px;
+    gap: 20px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    /* スマホ用折り返し */
 }
 
-/* ラジオボタンラベル */
 .mode-options label {
-    font-size: 1.1em;
+    font-size: 1rem;
 }
 
-/* クイズスタートボタン */
+/* ================================
+     ボタンスタイル
+  ================================ */
 button {
-    background-color: #ffd700;
-    color: #000;
-    padding: 12px 24px;
-    font-size: 1.1em;
+    background-color: #ffcc00;
     border: none;
-    border-radius: 8px;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background-color 0.2s ease;
 }
 
 button:hover {
-    background-color: #ffcc00;
+    background-color: #ffdb4d;
 }
 
-/* スマホ対応：横幅を広く・中央表示 */
-@media screen and (max-width: 768px) {
-    form {
-        width: 95%;
-        padding: 16px;
+/* ================================
+     レスポンシブ調整（スマホ用）
+  ================================ */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
     }
 
-    .generation-options {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    h2 {
+        font-size: 1rem;
     }
 
     .gen-images img {
-        width: 56px;
-        height: 56px;
+        width: 44px;
+        height: 44px;
     }
 
     .mode-options {
-        flex-direction: row;
         flex-wrap: nowrap;
+        /* スマホでも折り返さない */
+        flex-direction: row;
         justify-content: center;
         gap: 16px;
-    }
-
-    button {
-        font-size: 1em;
-        padding: 12px 20px;
     }
 }
